@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  taskmanager-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Mappe le port 5000 de l'hôte au port 5000 du conteneur
+    environment:
+      - FIREBASE_CONFIG=./config/firebaseAdmin.js # Spécifiez le chemin vers le fichier de configuration Firebase
+    volumes:
+      - .:/app # Monte le répertoire courant dans le conteneur
+    networks:
+      - taskmanager-network
+
+networks:
+  taskmanager-network:
+    driver: bridge

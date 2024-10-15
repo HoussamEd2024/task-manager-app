@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Task App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let task of tasks">
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+        <p><strong>Due Date:</strong> {{ task.dueDate | date: 'mediumDate' }}</p>
+        <p><strong>Priority:</strong> 
+          <span [ngClass]="{
+            'low-priority': task.priority === 'low',
+            'normal-priority': task.priority === 'normal',
+            'high-priority': task.priority === 'high'
+          }">{{ task.priority | titlecase }}</span>
+        </p>
+      </ion-label>
+
+      <ion-button fill="outline" color="primary" (click)="editTask(task)">
+        Edit
+      </ion-button>
+      <ion-button fill="outline" color="danger" (click)="deleteTask(task.id)">
+        Delete
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTask()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

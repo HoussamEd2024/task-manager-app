@@ -1,0 +1,6 @@
+# Ignorer le dossier node_modules pour le frontend
+task-manager-frontend/node_modules/
+task-manager-frontend/.angular/
+task-manager-frontend/.vscode/
+# Ignorer le dossier node_modules pour le backend
+task-manager-backend/node_modules/
